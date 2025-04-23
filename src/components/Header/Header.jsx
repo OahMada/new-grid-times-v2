@@ -29,14 +29,14 @@ const Header = () => {
 				</Row>
 			</SuperHeader>
 			<MainHeader>
-				<ActionGroup>
+				<DesktopOnlyActionGroup>
 					<button>
 						<Search size={24} />
 					</button>
 					<button>
 						<Menu size={24} />
 					</button>
-				</ActionGroup>
+				</DesktopOnlyActionGroup>
 				<Logo />
 				<SubscribeAction>
 					<SubscribeActionSpacer />
@@ -79,10 +79,21 @@ const ActionGroup = styled.div`
 const MainHeader = styled(MaxWidthWrapper)`
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	margin-top: 32px;
 	margin-bottom: 48px;
 	height: ${98 / 16}rem;
+
+	@media ${QUERIES.desktopAndUp} {
+		justify-content: space-between;
+	}
+`;
+
+var DesktopOnlyActionGroup = styled(ActionGroup)`
+	display: none;
+	@media ${QUERIES.desktopAndUp} {
+		display: flex;
+	}
 `;
 
 var SubscribeActionSpacer = styled.div`
@@ -90,11 +101,15 @@ var SubscribeActionSpacer = styled.div`
 `;
 
 var SubscribeAction = styled.div`
-	display: flex;
+	display: none;
 	flex-direction: column;
 	align-items: center;
 	gap: 8px;
 	height: 100%;
+
+	@media ${QUERIES.desktopAndUp} {
+		display: flex;
+	}
 `;
 
 var SubscriberLink = styled.a`
