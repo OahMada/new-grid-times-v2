@@ -21,6 +21,12 @@ var ArticleLink = styled.a`
 		border-bottom: 1px solid var(--color-gray-300);
 		padding-bottom: 16px;
 		margin-bottom: 16px;
+
+		@media ${QUERIES.tabletOnly} {
+			border-bottom: revert;
+			padding-bottom: revert;
+			margin-bottom: revert;
+		}
 	}
 `;
 
