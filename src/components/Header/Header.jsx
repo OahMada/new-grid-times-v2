@@ -39,7 +39,6 @@ const Header = () => {
 				</DesktopOnlyActionGroup>
 				<Logo />
 				<SubscribeAction>
-					<SubscribeActionSpacer />
 					<Button>Subscribe</Button>
 					<SubscriberLink href='#'>Already a subscriber?</SubscriberLink>
 				</SubscribeAction>
@@ -84,8 +83,18 @@ const MainHeader = styled(MaxWidthWrapper)`
 	margin-bottom: 48px;
 	height: ${98 / 16}rem;
 
+	@media ${QUERIES.tabletAndUp} {
+		margin-top: 48px;
+	}
+
 	@media ${QUERIES.desktopAndUp} {
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		align-items: center;
+		justify-content: revert;
+		justify-items: start;
+		margin-top: 16px;
+		margin-bottom: 72px;
 	}
 `;
 
@@ -96,29 +105,26 @@ var DesktopOnlyActionGroup = styled(ActionGroup)`
 	}
 `;
 
-var SubscribeActionSpacer = styled.div`
-	flex: 1;
-`;
-
 var SubscribeAction = styled.div`
 	display: none;
-	flex-direction: column;
-	align-items: center;
-	gap: 8px;
-	height: 100%;
 
 	@media ${QUERIES.desktopAndUp} {
-		display: flex;
+		display: revert;
+		justify-self: end;
+		position: relative;
 	}
 `;
 
 var SubscriberLink = styled.a`
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	margin-top: 8px;
 	text-decoration: underline;
 	font-size: ${14 / 16}rem;
 	font-style: italic;
 	font-weight: var(--font-weight-normal);
 	color: var(--color-gray-900);
-	flex: 1;
 `;
 
 export default Header;

@@ -177,16 +177,21 @@ const MainNavArea = styled.div`
 	text-align: center;
 
 	@media ${QUERIES.tabletAndUp} {
+		/* flex-direction: revert;
+		flex-wrap: wrap; */
+
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		flex-direction: revert;
-		flex-wrap: wrap;
+		text-align: start;
 	}
 `;
 
 var MinNavWrapper = styled.nav`
-	@media ${QUERIES.tabletAndUp} {
-		flex: 1 0 max-content;
-		text-align: start;
-	}
+	/* @media ${QUERIES.tabletAndUp} { */
+	/* flex: 1 0 max-content; */
+	/* text-align: start; */
+	/* } */
 `;
 
 const MainNavHeading = styled.h2`
@@ -201,9 +206,9 @@ const MainNavList = styled.ul`
 	flex-direction: column;
 	gap: 4px;
 
-	@media ${QUERIES.tabletAndUp} {
+	/* @media ${QUERIES.tabletAndUp} {
 		align-items: flex-start;
-	}
+	} */
 `;
 
 const SubfooterWrapper = styled.div`

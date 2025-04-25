@@ -20,7 +20,9 @@ const MainStoryGrid = () => {
 			<SecondaryStorySection>
 				<StoryList>
 					{SECONDARY_STORIES.map((story, index) => (
-						<SecondaryStory key={story.id} {...story} />
+						<SecondaryStoryWrapper key={story.id}>
+							<SecondaryStory {...story} />
+						</SecondaryStoryWrapper>
 					))}
 				</StoryList>
 			</SecondaryStorySection>
@@ -29,7 +31,9 @@ const MainStoryGrid = () => {
 				<SectionTitle>Opinion</SectionTitle>
 				<OpinionStoryList>
 					{OPINION_STORIES.map((story, index) => (
-						<OpinionStory key={story.id} {...story} />
+						<OpinionStoryWrapper key={story.id}>
+							<OpinionStory {...story} />
+						</OpinionStoryWrapper>
 					))}
 				</OpinionStoryList>
 			</OpinionSection>
@@ -78,6 +82,25 @@ const MainStorySection = styled.section`
 	}
 `;
 
+var SecondaryStoryWrapper = styled.div`
+	&:not(:last-of-type) {
+		border-bottom: 1px solid var(--color-gray-300);
+		padding-bottom: 16px;
+		margin-bottom: 16px;
+	}
+`;
+
+var OpinionStoryWrapper = styled(SecondaryStoryWrapper)`
+	@media ${QUERIES.tabletOnly} {
+		flex: 1;
+		&:not(:last-of-type) {
+			border-bottom: revert;
+			padding-bottom: revert;
+			margin-bottom: revert;
+		}
+	}
+`;
+
 const SecondaryStorySection = styled.section`
 	grid-area: secondary-stories;
 
@@ -95,9 +118,10 @@ const StoryList = styled.div`
 
 var OpinionStoryList = styled(StoryList)`
 	@media ${QUERIES.tabletOnly} {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		/* display: grid;
+		grid-template-columns: repeat(4, 1fr); */
 		gap: 32px;
+		flex-direction: row;
 	}
 `;
 

@@ -42,7 +42,7 @@ const Abstract = styled.p`
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 8;
-	overflow: hidden;
+	overflow: hidden; // necessary for line clamping
 
 	@media ${QUERIES.tabletOnly} {
 		-webkit-line-clamp: 16;

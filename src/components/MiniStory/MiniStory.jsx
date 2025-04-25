@@ -1,25 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { QUERIES } from '../../constants';
+// import { QUERIES } from '../../constants';
 
 const MiniStory = ({ id, image, title }) => {
 	return (
-		<StyledArticleLink href={`/story/${id}`}>
+		<a href={`/story/${id}`}>
 			<Wrapper>
 				<Image alt={image.alt} src={image.src} />
 				<Title>{title}</Title>
 			</Wrapper>
-		</StyledArticleLink>
+		</a>
 	);
 };
 
-var StyledArticleLink = styled.a`
-	@media ${QUERIES.tabletAndUp} {
-		width: 220px;
-		flex-shrink: 0;
-	}
-`;
+// var StyledArticleLink = styled.a`
+// 	@media ${QUERIES.tabletAndUp} {
+// 		width: 220px;
+// 		flex-shrink: 0;
+// 	}
+// `;
 
 const Wrapper = styled.article`
 	display: flex;

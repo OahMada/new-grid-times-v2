@@ -4,23 +4,23 @@ import { QUERIES } from '../../constants';
 
 const SecondaryStory = ({ id, title, image, location, abstract }) => {
 	return (
-		<ArticleLink href={`/story/${id}`}>
+		<a href={`/story/${id}`}>
 			<Wrapper>
 				<Image alt={image.alt} src={image.src} />
 				<Heading>{title}</Heading>
 				<Abstract>{abstract}</Abstract>
 			</Wrapper>
-		</ArticleLink>
+		</a>
 	);
 };
 
-var ArticleLink = styled.a`
-	&:not(:last-child) {
-		border-bottom: 1px solid var(--color-gray-300);
-		padding-bottom: 16px;
-		margin-bottom: 16px;
-	}
-`;
+// var ArticleLink = styled.a`
+// 	&:not(:last-child) {
+// 		border-bottom: 1px solid var(--color-gray-300);
+// 		padding-bottom: 16px;
+// 		margin-bottom: 16px;
+// 	}
+// `;
 
 const Wrapper = styled.article`
 	display: grid;
@@ -31,12 +31,13 @@ const Wrapper = styled.article`
 	grid-template-columns: 120px 1fr;
 	color: var(--color-gray-900);
 
+	// TODO use container queries for this
+
 	@media ${QUERIES.tabletOnly} {
 		grid-template-areas:
 			'image'
 			'heading'
 			'abstract';
-		gap: 0;
 		grid-template-columns: 1fr;
 	}
 `;
@@ -71,7 +72,8 @@ const Abstract = styled.p`
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
-	overflow: hidden;
+	overflow: hidden; /* Necessary for line-clamping */
+	align-self: start;
 `;
 
 export default SecondaryStory;
