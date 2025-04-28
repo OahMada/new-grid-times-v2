@@ -14,8 +14,6 @@ const STOCK_GRAPHS_BY_TICKER_SYMBOL = {
 	MSFT: '/images/stock-graph-down-3.svg',
 };
 
-// TODO make sense of this component
-
 const MarketCard = ({ tickerSymbol, exchangeName, percentChange }) => {
 	const graphSrc = STOCK_GRAPHS_BY_TICKER_SYMBOL[tickerSymbol];
 	const percentageSymbol = percentChange >= 0 ? '+' : '';

@@ -4,41 +4,37 @@ import { QUERIES } from '../../constants';
 
 const SecondaryStory = ({ id, title, image, location, abstract }) => {
 	return (
-		<a href={`/story/${id}`}>
+		<ArticleLink href={`/story/${id}`}>
 			<Wrapper>
 				<Image alt={image.alt} src={image.src} />
 				<Heading>{title}</Heading>
 				<Abstract>{abstract}</Abstract>
 			</Wrapper>
-		</a>
+		</ArticleLink>
 	);
 };
 
-// var ArticleLink = styled.a`
-// 	&:not(:last-child) {
-// 		border-bottom: 1px solid var(--color-gray-300);
-// 		padding-bottom: 16px;
-// 		margin-bottom: 16px;
-// 	}
-// `;
+var ArticleLink = styled.a`
+	display: block;
+	container-type: inline-size;
+`;
 
 const Wrapper = styled.article`
 	display: grid;
-	grid-template-areas:
-		'image heading'
-		'image abstract';
 	gap: 4px 16px;
-	grid-template-columns: 120px 1fr;
 	color: var(--color-gray-900);
 
-	// TODO use container queries for this
+	grid-template-areas:
+		'image'
+		'heading'
+		'abstract';
+	grid-template-columns: 1fr;
 
-	@media ${QUERIES.tabletOnly} {
+	@container (min-width: 300px) {
 		grid-template-areas:
-			'image'
-			'heading'
-			'abstract';
-		grid-template-columns: 1fr;
+			'image heading'
+			'image abstract';
+		grid-template-columns: 120px 1fr;
 	}
 `;
 
